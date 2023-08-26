@@ -4,7 +4,6 @@ import logging
 from django.core.management.base import BaseCommand
 from recipes.models import Ingredients
 
-
 logger = logging.getLogger(__name__)
 
 
