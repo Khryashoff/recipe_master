@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'django_filters',
+    'colorfield',
     'drf_extra_fields',
     'djoser',
 ]
@@ -209,18 +210,3 @@ RECIPE_NAME: int = 200
 
 # List of allowed HTTP methods for performing actions related to user data
 ALLOWED_ACTIONS = ('get', 'post', 'patch', 'delete', 'head', 'options', 'trace')
-
-# The standard number of displayed items per page
-STANDART_PAGE_SIZE: int = 6
-
-# Prepared timestamp colors
-
-ORANGE = 'ffa500'
-GREEN = '37ff00'
-PURPLE = 'aa00bd'
-
-COLOR_CHOISE = [
-    (ORANGE, 'Оранжевый'),
-    (GREEN, 'Зеленый'),
-    (PURPLE, 'Фиолетовый'),
-]

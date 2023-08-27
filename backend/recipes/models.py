@@ -1,6 +1,7 @@
 from django.core.validators import MaxValueValidator, MinValueValidator
+from colorfield.fields import ColorField
 from django.db import models
-from foodgram.settings import (COLOR_CHOISE, INGREDIENT_NAME, INGREDIENT_UNITS,
+from foodgram.settings import (INGREDIENT_NAME, INGREDIENT_UNITS,
                                RECIPE_NAME, TAG_COLOR, TAG_NAME, TAG_SLUG)
 from users.models import User
 
@@ -35,11 +36,10 @@ class TimeTag(models.Model):
         max_length=TAG_NAME,
         unique=True
     )
-    color = models.CharField(
-        verbose_name='Цвет временной метки, стандарт HEX',
+    color = ColorField(
+        'Цвет',
         max_length=TAG_COLOR,
-        unique=True,
-        choices=COLOR_CHOISE
+        unique=True
     )
     slug = models.SlugField(
         verbose_name='Ссылка временной метки',
