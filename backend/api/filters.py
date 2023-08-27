@@ -1,20 +1,19 @@
-import django_filters
-from django_filters import filters
+from django_filters.rest_framework import FilterSet, filters
 from recipes.models import Ingredients, Recipes, TimeTag
 
 
-class IngredientsFilter(django_filters.FilterSet):
+class IngredientsFilter(FilterSet):
     """
     Фильтр для модели Ingredients.
     """
-    name = django_filters.CharFilter(lookup_expr='istartswith')
+    name = filters.CharFilter(lookup_expr='startswith')
 
     class Meta:
         model = Ingredients
         fields = ['name']
 
 
-class RecipesFilter(django_filters.FilterSet):
+class RecipesFilter(FilterSet):
     """
     Фильтр для модели Recipes.
     """
@@ -26,7 +25,7 @@ class RecipesFilter(django_filters.FilterSet):
     author = filters.NumberFilter(
         field_name='author__id',
     )
-    is_favorites = filters.BooleanFilter(method='get_is_favorites')
+    is_favorited = filters.BooleanFilter(method='get_is_favorited')
     is_in_shopping_cart = filters.BooleanFilter(
         method='get_is_in_shopping_cart'
     )
@@ -36,11 +35,9 @@ class RecipesFilter(django_filters.FilterSet):
         fields = [
             'tags',
             'author',
-            'is_favorites',
-            'is_in_shopping_cart',
         ]
 
-    def get_is_favorites(self, queryset, name, value):
+    def get_is_favorited(self, queryset, name, value):
         """
         Фильтрует рецепты по наличию в избранном у пользователя.
         """

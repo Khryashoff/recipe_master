@@ -192,7 +192,7 @@ class RecipesViewSet(ModelViewSet):
     http_method_names = ALLOWED_ACTIONS
     queryset = Recipes.objects.all()
     pagination_class = FoodgramPageNumberPagination
-    permission_classes = [AuthorOrReadOnly]
+    permission_classes = (AuthorOrReadOnly,)
     filter_backends = (DjangoFilterBackend,)
     filterset_class = RecipesFilter
 

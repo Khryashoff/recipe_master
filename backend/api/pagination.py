@@ -1,4 +1,3 @@
-from foodgram.settings import STANDART_PAGE_SIZE
 from rest_framework.pagination import PageNumberPagination
 
 
@@ -11,5 +10,4 @@ class FoodgramPageNumberPagination(PageNumberPagination):
         page_size_query_param (str): Параметр запроса для указания
         количества элементов на странице.
     """
-    page_size = STANDART_PAGE_SIZE
     page_size_query_param = 'limit'
