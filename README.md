@@ -144,6 +144,7 @@ docker compose -f docker-compose.production.yml exec backend python manage.py in
 ```
 8. Adapt the file to suit yourself by setting up secrets using GitHub Actions:
 
+```
 SECRET_KEY                     # Secret key Django-project
 DEBUG                          # True or False
 ALLOWED_HOSTS                  # you can specify an asterisk *
