@@ -22,6 +22,12 @@ class Ingredients(models.Model):
     class Meta:
         verbose_name = 'Ингредиент'
         verbose_name_plural = 'Ингредиенты'
+        constraints = [
+            models.UniqueConstraint(
+                fields=['name', 'measurement_unit'],
+                name='unique_name_measurement_unit'
+            ),
+        ]
 
     def __str__(self) -> str:
         return f'{self.name}, {self.measurement_unit}'
@@ -135,6 +141,9 @@ class RecipeIngredients(models.Model):
         validators=[
             MinValueValidator(
                 1, message='Минимальное количество 1!'
+            ),
+            MaxValueValidator(
+                5000, message='Максимальное количество 5000!'
             )
         ]
     )

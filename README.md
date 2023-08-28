@@ -10,9 +10,13 @@
 
 Our mouth-watering pages are open to anyone who shares a passion for cooking, food and creativity. Foodgram is a unique online platform where everyone can share their culinary masterpieces, find inspiration from other talented authors and organize their culinary experience in a more convenient and fun way.
 
-## Check out the project's website
+# ДАННЫЕ ДЛЯ ВХОДА НА САЙТ (Временный блок)
 
-<br>[FoodGram](https://foodgramtool.sytes.net/)</br>
+[foodgramtool.sytes.net](https://foodgramtool.sytes.net/)
+```bash
+login: admin
+password: admin
+```
 
 ## Launching a project in dev mode
 1. Clone the repository and go to it on the command line:

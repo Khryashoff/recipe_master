@@ -210,3 +210,6 @@ RECIPE_NAME: int = 200
 
 # List of allowed HTTP methods for performing actions related to user data
 ALLOWED_ACTIONS = ('get', 'post', 'patch', 'delete', 'head', 'options', 'trace')
+
+# Minimum number of related objects
+MININUN_NUM: int = 1

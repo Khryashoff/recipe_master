@@ -1,6 +1,19 @@
 from django.contrib import admin
 
-from .models import Favorites, Ingredients, Recipes, Shoplist, TimeTag
+from foodgram.settings import MININUN_NUM
+from .models import (Favorites, Ingredients, Recipes,
+                     Shoplist, TimeTag, RecipeIngredients)
+
+
+class RecipeIngredientsInline(admin.TabularInline):
+    """
+    Класс, для связи моделей Ingredients и Recipes в
+    административном интерфейсе.
+    """
+    model = RecipeIngredients
+    min_num = MININUN_NUM
+    validate_min = True
+    extra = MININUN_NUM
 
 
 @admin.register(Ingredients)
@@ -15,6 +28,7 @@ class IngredientsAdmin(admin.ModelAdmin):
     ]
     list_filter = ('name',)
     search_fields = ('name',)
+    inlines = (RecipeIngredientsInline,)
 
 
 @admin.register(TimeTag)
@@ -53,6 +67,7 @@ class RecipesAdmin(admin.ModelAdmin):
         'author',
         'tags'
     )
+    inlines = (RecipeIngredientsInline,)
     ordering = ('-id',)
 
     @admin.display(description='Находится в избранном')

@@ -1,5 +1,6 @@
 import re
 
+from django.db import transaction
 from djoser.serializers import UserSerializer
 from drf_extra_fields.fields import Base64ImageField
 from foodgram.settings import PASSWORD
@@ -129,7 +130,7 @@ class SubscribeDetailSerializer(UsersSerializer):
         Возвращает общее количество рецептов,
         на которые подписан пользователь.
         """
-        return obj.recipes.all().count()
+        return obj.recipes.count()
 
 
 class SubscribeSerializer(serializers.ModelSerializer):
@@ -280,11 +281,7 @@ class CreateRecipeIngredientsSerializer(serializers.ModelSerializer):
     """
     Сериализатор связывающий модели Recipe и Ingredients.
     """
-    id = serializers.PrimaryKeyRelatedField(
-        queryset=Ingredients.objects.all(), validators=[
-            UniqueValidator(queryset=Ingredients.objects.all())
-        ]
-    )
+    id = serializers.IntegerField(write_only=True)
     amount = serializers.IntegerField(min_value=1)
 
     class Meta:
@@ -334,7 +331,7 @@ class CreateRecipeSerializer(serializers.ModelSerializer):
                 })
             ingredient_list.append(ingredient_id)
             amount = ingredient['amount']
-            if int(amount) < 1:
+            if int(amount) < 1 and int(amount) > 5000:
                 raise ValidationError({
                     'amount': 'Введите правильное количество'
                 })
@@ -352,26 +349,20 @@ class CreateRecipeSerializer(serializers.ModelSerializer):
                 })
             tags_list.append(tag)
 
-        cooking_time = data.get('cooking_time')
-        try:
-            if int(cooking_time) < 1:
-                raise ValueError()
-        except (ValueError, TypeError):
-            raise ValidationError({
-                'cooking_time': 'Введите правильное время приготовления'
-            })
         return data
 
-    def add_ingredients(self, ingredients_data, recipe):
+    @transaction.atomic
+    def add_ingredients(self, ingredients, recipe):
         """
         Добавляет ингредиенты к рецепту.
         """
-        for ingredient in ingredients_data:
-            RecipeIngredients.objects.create(
+        RecipeIngredients.objects.bulk_create(
+            [RecipeIngredients(
+                ingredient=Ingredients.objects.get(id=ingredient['id']),
                 recipe=recipe,
-                amount=ingredient['amount'],
-                ingredient=ingredient['id']
-            )
+                amount=ingredient['amount']
+            ) for ingredient in ingredients]
+        )
 
     def add_tags(self, tags, recipe):
         """
@@ -380,6 +371,7 @@ class CreateRecipeSerializer(serializers.ModelSerializer):
         for tag in tags:
             recipe.tags.add(tag)
 
+    @transaction.atomic
     def create(self, validated_data):
         """
         Создает новый рецепт.
@@ -392,6 +384,7 @@ class CreateRecipeSerializer(serializers.ModelSerializer):
         self.add_ingredients(ingredients_data, recipe)
         return recipe
 
+    @transaction.atomic
     def update(self, instance, validated_data):
         """
         Обновляет существующий рецепт.
