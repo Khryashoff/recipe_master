@@ -7,7 +7,7 @@
 ![Docker](https://img.shields.io/badge/-Docker-2496ED?style=flat&logo=docker&logoColor=white)
 
 # Russian version
-*Note: The English version of this document is also available [here](#english-version).*
+*Note: The English version of this document is also available [here](https://github.com/Khryashoff/foodgram-project-react#english-version).*
 
 ## Описание
 
@@ -177,8 +177,9 @@ TELEGRAM_TOKEN                 # токен бота
 
 Сергей Хрящев [(Khryashoff)](https://github.com/Khryashoff)
 
+---
 
-# English version {#english-version}
+# English version
 
 ## Description
 
