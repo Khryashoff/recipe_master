@@ -1,4 +1,4 @@
-# FoodGram
+# Recipe Master
 
 ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat&logo=python&logoColor=white)
 ![Django](https://img.shields.io/badge/-Django-092E20?style=flat&logo=django&logoColor=white)
@@ -7,20 +7,17 @@
 ![Docker](https://img.shields.io/badge/-Docker-2496ED?style=flat&logo=docker&logoColor=white)
 
 # Russian version
-*Note: The English version of this document is also available [here](https://github.com/Khryashoff/foodgram-project-react#english-version).*
+*Note: The English version of this document is also available [here](https://github.com/Khryashoff/recipe_master#english-version).*
 
 ## Описание
 
-Наши аппетитные страницы открыты для всех, кто разделяет страсть к кулинарии, еде и творчеству. Foodgram - это уникальная онлайн-платформа, где каждый может поделиться своими кулинарными шедеврами, находить вдохновение у других талантливых авторов и организовывать свой кулинарный опыт более удобным и увлекательным способом.
+Recipe Master — это продвинутая онлайн-платформа, где пользователи могут делиться своими уникальными рецептами, находить новые идеи и систематизировать свой кулинарный опыт. Платформа предоставляет удобные инструменты для создания, организации и публикации рецептов, а также возможность сохранять избранные блюда и формировать списки покупок.
 
 ## Запуск проекта в режиме разработки
 
 1. Клонируйте репозиторий и перейдите в него через командную строку:
 ```bash
-git clone https://github.com/Khryashoff/foodgram-project-react.git
-```
-```bash
-cd foodgram-project-react/
+git clone git@github.com:Khryashoff/recipe_master.git
 ```
 2. Установите и активируйте виртуальное окружение для проекта:
 ```bash
@@ -65,7 +62,7 @@ python manage.py runserver
 
 2. Клонируйте репозиторий и перейдите в него через командную строку:
 ```bash
-git clone git@github.com:"<your_github_username>"/foodgram-project-react.git
+git clone git@github.com:"<your_github_username>"/recipe_master.git
 ```
 2. Если вы не собираетесь запускать проект локально, выполните развёртывание на сервере:
 ```bash
@@ -168,11 +165,6 @@ TELEGRAM_TO                    # id аккаунта в Telegram
 TELEGRAM_TOKEN                 # токен бота
 ```
 
-<br>[FoodGram](https://foodgramtool.sytes.net/)</br>
-<br>[API FoodGram](https://foodgramtool.sytes.net/api/)</br>
-<br>[Документация Foodgram](https://foodgramtool.sytes.net/api/docs/)</br>
-<br>[Админ Панель](https://foodgramtool.sytes.net/admin/)</br>
-
 ## Участники разработки
 
 Сергей Хрящев [(Khryashoff)](https://github.com/Khryashoff)
@@ -183,15 +175,12 @@ TELEGRAM_TOKEN                 # токен бота
 
 ## Description
 
-Our mouth-watering pages are open to anyone who shares a passion for cooking, food and creativity. Foodgram is a unique online platform where everyone can share their culinary masterpieces, find inspiration from other talented authors and organize their culinary experience in a more convenient and fun way.
+Recipe Master is an advanced online platform where users can share their unique recipes, find new ideas and organize their culinary experience. The platform provides convenient tools for creating, organizing and publishing recipes, as well as the ability to save favorite dishes and create shopping lists.
 
 ## Launching a project in dev mode
 1. Clone the repository and go to it on the command line:
 ```bash
-git clone https://github.com/Khryashoff/foodgram-project-react.git
-```
-```bash
-cd foodgram-project-react/
+git clone git@github.com:Khryashoff/recipe_master.git
 ```
 2. Install and activate the virtual environment for the project:
 ```bash
@@ -236,7 +225,7 @@ python manage.py runserver
 
 2. Clone the repository and go to it on the command line:
 ```bash
-git clone git@github.com:"<your_github_username>"/foodgram-project-react.git
+git clone git@github.com:"<your_github_username>"/recipe_master.git
 ```
 2. Make a deployment to the server if you are not going to run locally:
 ```bash
@@ -338,11 +327,6 @@ DB_PORT                        # 5432
 TELEGRAM_TO                    # telegram account id
 TELEGRAM_TOKEN                 # bot token
 ```
-
-<br>[FoodGram](https://foodgramtool.sytes.net/)</br>
-<br>[API FoodGram](https://foodgramtool.sytes.net/api/)</br>
-<br>[Documentation Foodgram](https://foodgramtool.sytes.net/api/docs/)</br>
-<br>[Admin Panel](https://foodgramtool.sytes.net/admin/)</br>
 
 ## Participants
 
